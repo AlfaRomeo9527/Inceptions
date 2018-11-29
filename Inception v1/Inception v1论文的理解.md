@@ -1,5 +1,6 @@
 ##Inception v1 《Going deeper with convolutions》论文的理解
-### *一、赫布理论 Hebbian theory*  
+
+### *赫布理论 Hebbian theory*  
 
 &emsp;&emsp;赫布理论：描述了突触可塑性的基本原理，即突触前神经元向突触后神经元的持续重复的刺激可以导致突触传递效能的增加。这一理论由唐纳德·赫布于1949年提出，又被称为赫布定律（Hebb's rule）、赫布假说（Hebb's postulate）、细胞结集理论（cell assembly theory）等。  
 &emsp;&emsp;描述了突触可塑性的基本原理，即突触前神经元向突触后神经元的持续重复的刺激可以导致突触传递效能的增加。这一理论由唐纳德·赫布于1949年提出，又被称为赫布定律（Hebb's rule）、赫布假说（Hebb's postulate）、细胞结集理论（cell assembly theory）等  
@@ -10,7 +11,7 @@
 其中w<sub>ij</sub>是从神经元 j 到神经元 i 的联接权重，x<sub>i</sub>是神经元 i 的输入。注意这是模式学习，每个训练样本都会导致权重改变。在Hopfield神经网络中， 如果 i=j则w<sub>ij</sub>恒为0（没有神经元和自身相连）。  
 对于二进制的神经元（激发值只能为0或者1），如果它联接的神经元有相同的激发模式，则联接会设定为1。
 另一种表达式为:  
-        &emsp;&emsp;![公式alt](/home/alpha/MyProject/InceptionV1~V4/Inception v1/models/formula.jpg)  
+        &emsp;&emsp;![公式alt](./formula.jpg)  
 &emsp;&emsp;其中  是从神经元 j 到神经元 i 的联接权重， p 是训练模式的个数,，而  是神经元 i 的第  个输入。  
 （这是按照时段来进行学习，在所有训练样本都给出了之后再更新权重。） 同样的，在Hopfield神经网络中， 如果  则  恒为0（没有神经元和自身相连）。
 赫布理论有一个变体，称作哈里·克洛普弗理论（Harry Klopf's model），考虑了包括阻断等生理现象，可以再现很多生物学表现，也很容易使用。  
@@ -24,9 +25,9 @@ n轮特征采集后（比如卷积操作）最后的权重应该是稀疏的，�
 中所说，这是性价比极高的一次特征提取，只是视野比较小。1x1另一个重要的作用便是控制通道数，1x1卷积操作可以在不改变长宽的情况下压缩或者增加通道，正是因  
 为这个才产生了inception模块。
 
-###二、Inception V1 细节特点疏理：  
+###Inception V1 特点细节疏理：  
 &emsp;&emsp;主要提出了Inceptionmodule结构（1*1，3*3，5*5的conv和3*3的pooling组合在一起），最大的亮点就是从NIN（Network in Network）中引入了1*1 conv，结构如下图所示，代表作GoogleNet。  
-![Inception Module](/home/alpha/MyProject/InceptionV1~V4/Inception v1/Inception v1 module.jpg)  
+![Inception Module](./Inception v1 module.jpg)  
 
 
     假设previous layer的大小为28*28*192，则，
@@ -53,11 +54,11 @@ n轮特征采集后（比如卷积操作）最后的权重应该是稀疏的，�
 (1)整个网络为了保证收敛，有3个loss  
 (2)最后一个全连接层之前使用的是global average pooling，全局pooling使用的好了，还是有好多地方可以发挥的。  
 
-![Goolnet网络结构](/home/alpha/MyProject/InceptionV1~V4/Inception v1/Inception.jpg)    
+![Goolnet网络结构](./Inception.jpg)    
 
 
 
 
 
   
-![Inception V1 Architecture](/home/alpha/MyProject/InceptionV1~V4/Inception v1/Google InceptionV1 architecture.png)
+![Inception V1 Architecture](./Google InceptionV1 architecture.png)
