@@ -1,5 +1,4 @@
-##Inception v1 《Going deeper with convolutions》论文的理解
-
+##Inception v1 《Going deeper with convolutions》论文的理解  
 ### *赫布理论 Hebbian theory*  
 
 &emsp;&emsp;赫布理论：描述了突触可塑性的基本原理，即突触前神经元向突触后神经元的持续重复的刺激可以导致突触传递效能的增加。这一理论由唐纳德·赫布于1949年提出，又被称为赫布定律（Hebb's rule）、赫布假说（Hebb's postulate）、细胞结集理论（cell assembly theory）等。  
@@ -47,9 +46,8 @@ n轮特征采集后（比如卷积操作）最后的权重应该是稀疏的，�
 2. 1 * 1卷积特有的功能，由于1*1卷积只有一个参数，相当于对原始feature map做了一个scale，并且这个scale还是训练学出来的，无疑会对识别精度有提升。  
 3. 增加了网络的深度。  
 4. 增加了网络的宽度。  
-5. 同时使用了1*1，3*3，5*5的卷积，增加了网络对尺度的适应性。  
-
-&emsp;&emsp;下图为googlenet网络结构：
+5. 同时使用了1 * 1，3 * 3，5 * 5的卷积，增加了网络对尺度的适应性。  
+下图为googlenet网络结构：
 这里有2个地方需要注意：  
 (1)整个网络为了保证收敛，有3个loss  
 (2)最后一个全连接层之前使用的是global average pooling，全局pooling使用的好了，还是有好多地方可以发挥的。  
