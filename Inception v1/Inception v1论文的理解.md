@@ -1,5 +1,5 @@
 ## Inception v1 《Going deeper with convolutions》论文的理解  
-###*赫布理论 Hebbian theory*  
+### *赫布理论Hebbian theory*  
 
 &emsp;&emsp;赫布理论：描述了突触可塑性的基本原理，即突触前神经元向突触后神经元的持续重复的刺激可以导致突触传递效能的增加。这一理论由唐纳德·赫布于1949年提出，又被称为赫布定律（Hebb's rule）、赫布假说（Hebb's postulate）、细胞结集理论（cell assembly theory）等。  
 &emsp;&emsp;描述了突触可塑性的基本原理，即突触前神经元向突触后神经元的持续重复的刺激可以导致突触传递效能的增加。这一理论由唐纳德·赫布于1949年提出，又被称为赫布定律（Hebb's rule）、赫布假说（Hebb's postulate）、细胞结集理论（cell assembly theory）等  
