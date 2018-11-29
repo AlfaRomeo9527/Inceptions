@@ -25,7 +25,7 @@ n轮特征采集后（比如卷积操作）最后的权重应该是稀疏的，�
 为这个才产生了inception模块。
 
 ### Inception V1 特点细节疏理：  
-&emsp;&emsp;主要提出了Inceptionmodule结构（1*1，3*3，5*5的conv和3*3的pooling组合在一起），最大的亮点就是从NIN（Network in Network）中引入了1*1 conv，结构如下图所示，代表作GoogleNet。  
+&emsp;&emsp;主要提出了Inception module结构（1 * 1，3 * 3，5 * 5的conv和3 * 3的pooling组合在一起），最大的亮点就是从NIN（Network in Network）中引入了1*1 conv，结构如下图所示，代表作GoogleNet。  
 ![Inception Module](Inception_v1_module.jpg)  
 
 
