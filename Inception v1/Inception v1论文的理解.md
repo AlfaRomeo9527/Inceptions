@@ -27,7 +27,7 @@ n轮特征采集后（比如卷积操作）最后的权重应该是稀疏的，�
 
 ###Inception V1 特点细节疏理：  
 &emsp;&emsp;主要提出了Inceptionmodule结构（1*1，3*3，5*5的conv和3*3的pooling组合在一起），最大的亮点就是从NIN（Network in Network）中引入了1*1 conv，结构如下图所示，代表作GoogleNet。  
-![Inception Module](./Inception v1 module.jpg)  
+![Inception Module](Inception_v1_module.jpg)  
 
 
     假设previous layer的大小为28*28*192，则，
@@ -61,4 +61,4 @@ n轮特征采集后（比如卷积操作）最后的权重应该是稀疏的，�
 
 
   
-![Inception V1 Architecture](./Google InceptionV1 architecture.png)
+![Inception V1 Architecture](Google_InceptionV1_architecture.png)
