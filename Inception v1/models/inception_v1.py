@@ -31,36 +31,14 @@ def inception_v1(inputs):
         net = slim.max_pool2d(net, [3, 3], 2, padding="SAME", scope="pool2")
         with tf.variable_scope("depthConcat_1"):
             depthConcat_1 = depthConcat(net, [64], [96, 128], [16, 32], [32])
-
-            # branch_1 = slim.conv2d(net, 64, [1, 1], scope="branch_1")
-            # branch_2 = slim.stack(net, slim.conv2d, [(96, [1, 1]), (128, [3, 3])], scope="branch_2")
-            # branch_3 = slim.stack(net, slim.conv2d, [(16, [1, 1]), (32, [5, 5])], scope="branch_3")
-            # with tf.variable_scope("branch_4"):
-            #     branch_4_pool = slim.max_pool2d(net, [3, 3], 1, scope="pool_1")
-            #     branch_4 = slim.conv2d(branch_4_pool, 32, [1, 1])
-            # depthConcat_1 = tf.concat(values=[branch_1, branch_2, branch_3, branch_4], axis=3)
-
         with tf.variable_scope("dethConcat_2"):
             depthConcat_2 = depthConcat(depthConcat_1, [128], [128, 192], [32, 96], [64])
-            # branch_1 = slim.conv2d(depthConcat_1, 128, [1, 1], scope="branch_1")
-            # branch_2 = slim.stack(depthConcat_1, slim.conv2d, [128, [1, 1], (192, [3, 3])], scope="branch_2")
-            # branch_3 = slim.stack(depthConcat_1, slim.conv2d, [32, [1, 1], (96, [5, 5])], scope="branch_3")
-            # with tf.variable_scope("branch_4"):
-            #     branch_4_pool = slim.max_pool2d(depthConcat_1, [3, 3], 1, scope="pool_1")
-            #     branch_4 = slim.conv2d(branch_4_pool, 64, [1, 1])
-            # depthConcat_2 = tf.concat(values=[branch_1, branch_2, branch_3, branch_4], axis=3)
 
         net = slim.max_pool2d(depthConcat_2, [3, 3], scope="pool3")
 
         with tf.variable_scope("depthConcat_3"):
             depthConcat_3 = depthConcat(net, [192], [96, 208], [16, 48], [64])
-            # branch_1 = slim.conv2d(net, 192, [1, 1], scope="branch_1")
-            # branch_2 = slim.stack(net, slim.conv2d, [(96, [1, 1]), (208, [3, 3])], scope="branch_2")
-            # branch_3 = slim.stack(net, slim.conv2d, [(16, [1, 1]), (48, [5, 5])], scope="branch_3")
-            # with tf.variable_scope("branch_4"):
-            #     branch_4_pool = slim.max_pool2d(net, [3, 3], 1, scope="pool_1")
-            #     branch_4 = slim.conv2d(branch_4_pool, 64, [1, 1])
-            # depthConcat_3 = tf.concat(values=[branch_1, branch_2, branch_3, branch_4], axis=3)
+
         with tf.variable_scope("softmax0"):
             average_pool = slim.avg_pool2d(depthConcat_3, [5, 5, ], 3, scope="average_pool")
 
@@ -69,16 +47,7 @@ def inception_v1(inputs):
 
         with tf.variable_scope("depthConcat_4"):
             depthConcat_4 = depthConcat(depthConcat_3, [160], [112, 224], [24, 64], [64])
-            # branch_1 = slim.conv2d(depthConcat_3, 160, [1, 1], scope="branch_1")
-            # branch_2 = slim.stack(depthConcat_3, slim.conv2d, [(112, [1, 1]), (224, [3, 3])], scope="branch_2")
-            # branch_3 = slim.stack(depthConcat_3, slim.conv2d, [(24, [1, 1]), (64, [5, 5])], scope="branch_3")
-            # with tf.variable_scope("branch_4"):
-            #     branch_4_pool = slim.max_pool2d(depthConcat_3, 64, [3, 3], 1, scope="pool_1")
-            #     branch_4 = slim.conv2d(branch_4_pool, 64, [1, 1])
-            # depthConcat_4 = tf.concat(values=[branch_1, branch_2, branch_3, branch_4], axis=3)
-            # with tf.variable_scope("branch_5"):
-            #     depthConcat_5_pool = slim.avg_pool3d(depthConcat_2, [5, 5], 3)
-            #     slim.conv2d(depthConcat_5_pool, )
+
         with tf.variable_scope("depthConcat_5"):
             depthConcat_5 = depthConcat(depthConcat_4, [128], [128, 256], [24, 64], [64])
 

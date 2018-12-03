@@ -87,7 +87,7 @@ x = slim.conv2d(x, 64, [3, 3], scope='core/core_3')
 x = slim.conv2d(x, 64, [1, 1], scope='core/core_4')
 
 #Using stack
-slim.stack(s,slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1]),scope='core'])
+slim.stack(s,slim.conv2d,[(32,[3,3]),(32,[1,1]),(64,[3,3]),(64,[1,1])],scope='core')
 
 
 Scopes
@@ -96,15 +96,15 @@ Scopes
     先看如下代码片段：
     
     net = slim.conv2d(inputs, 64, [11, 11], 4, padding='SAME',
-                  weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
-                  weights_regularizer=slim.l2_regularizer(0.0005), scope='conv1')
+                  
     net = slim.conv2d(net, 128, [11, 11], padding='VALID',
                       weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
                       weights_regularizer=slim.l2_regularizer(0.0005), scope='conv2')
     net = slim.conv2d(net, 256, [11, 11], padding='SAME',
                       weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
                       weights_regularizer=slim.l2_regularizer(0.0005), scope='conv3')
-    从上面的代码中可以清楚的看出来，有3层卷积层，其中很多超参数都是一样的。两个卷积层有相同的padding，所有三个卷积层有相同的weights_initializer和weight_regularizer。
+    从上面的代码中可以清楚的看出来，有3层卷积层，其中很多超参数都是一样的。两个卷积层有相同的padding，所weights_initializer=tf.truncated_normal_initializer(stddev=0.01),
+                  weights_regularizer=slim.l2_regularizer(0.0005), scope='conv1')有三个卷积层有相同的weights_initializer和weight_regularizer。
     上面的代码包含了大量重复的值，其中一种解决方法是使用变量来说明一些默认的值：                
     padding = 'SAME'
     initializer = tf.truncated_normal_initializer(stddev=0.01)
