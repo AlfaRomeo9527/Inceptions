@@ -6,6 +6,8 @@ import numpy as np
 # 网络在实现过程发现，网络的损失有三部分，auxiliary，depthConcat_3，depthConcat_6以及最后输出层。其中auxiliary设置0.3的权重。
 # 由于在网络结构在无法获取隐藏层神经元个数，就不在网络中体现。
 
+#注意：网络中用到的max_pool 的 padding=“SAME”
+
 def depthConcat(inputs, branch_1, branch_2, branch_3, branch_4):
     # 这个BUG折腾了一天！！！
     # with slim.arg_scope([slim.conv2d], padding='SAME', weights_initializer=tf.truncated_normal(stddev=0.1),weights_regulizer=slim.l2_regularizer(0.0005)):
